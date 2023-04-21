@@ -1,0 +1,12 @@
+﻿@model Category
+@{
+}
+<h2>Категория: @Model.Name</h2>
+@foreach (Article art in ViewBag.Articles)
+{
+    <p>
+        <a asp-action="article"
+       asp-controller="Home"
+       asp-route-id="@art.Id">@art.Name</a>
+    </p>
+}

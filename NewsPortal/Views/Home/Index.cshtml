@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="">
+    <h1 class="display-4">Welcome</h1>
+
+    @foreach (Category cat in ViewBag.Categories)
+    {
+        <h2>
+            <a 
+                asp-action="category" 
+                asp-controller="Home"
+           asp-route-id="@cat.Id">@cat.Name</a>
+        </h2>
+        <div>
+        @foreach (Article art in ViewBag.Articles)
+        {
+            if (art.CategoryId == cat.Id)
+            {
+                <p>
+                        <a asp-action="article"
+               asp-controller="Home"
+               asp-route-id="@art.Id">@art.Name</a>
+                </p>
+            }
+        }
+        </div>
+    }
+   
+</div>
